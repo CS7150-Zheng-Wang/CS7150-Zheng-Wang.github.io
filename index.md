@@ -10,7 +10,7 @@
 
 ## Related Work
 
-This project builds upon two primary foundations in the field of controlled image generation with diffusion models. 
+This project builds upon two primary foundations in the field of image generation with diffusion models. 
 
 First, we leverage the **ControlNet** architecture proposed by Zhang et al. [[1]](#ref1) which introduces a trainable copy of the UNet encoder blocks that allows conditioning signals (such as edges, poses, or segmentation maps) to guide the image generation process. ControlNet has demonstrated remarkable ability to maintain fidelity to input conditions while preserving the high-quality generation capabilities of pretrained diffusion models.
 
@@ -24,7 +24,7 @@ Inspired by the groundbreaking work of Gandikota and Bau [[2]](#ref2), our appro
 
 <figure>
   <div align="center">
-    <img src="./img/dt_equation.png" alt="Diffusion Target Visualization equation" width="800" height="300">
+    <img src="./img/dt_equation.png" alt="Diffusion Target Visualization equation" width="600" height="100">
     <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
       <strong>Figure 1:</strong> The equation for Diffusion Target Visualization (DT-Visualization). It rearranges the diffusion equations to extract the model's prediction of the clean image (x̃₀,ₜ) at any timestep (t). This allows us to visualize how ControlNet interprets conditioning signals throughout the denoising trajectory.
     </figcaption>
