@@ -18,18 +18,33 @@ Our work is also heavily inspired by the recent advances in distillation techniq
 
 Our contribution builds on these foundations by analyzing how conditioning signals influence the denoising trajectory and proposing a novel switching mechanism between specialized and general models to optimize both conditioning fidelity and generation diversity/efficiency.
 
+## Diffusion Target Visualization: Making Model Predictions Visible
+
+Inspired by the groundbreaking work of Gandikota and Bau [[2]](#ref2), our approach leverages Diffusion Target Visualization (DT-Visualization) - a powerful technique that reveals the model's internal predictions at intermediate steps. DT-Visualization acts as a "time machine" into the generation process, allowing us to see what the model predicts as the final output long before the denoising process completes. 
+
+<figure>
+  <div align="center">
+    <img src="./img/dt_equation.png" alt="Diffusion Target Visualization equation" width="800" height="300">
+    <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
+      <strong>Figure 1:</strong> The equation for Diffusion Target Visualization (DT-Visualization). It rearranges the diffusion equations to extract the model's prediction of the clean image (x̃₀,ₜ) at any timestep (t). This allows us to visualize how ControlNet interprets conditioning signals throughout the denoising trajectory.
+    </figcaption>
+  </div>
+</figure>
+
+As shown in the equation above, DT-Visualization mathematically extracts the model's prediction of the clean image (x̃₀,ₜ) at any timestep (t) by rearranging the diffusion equations. This technique provides unique insights into how ControlNet interprets conditioning signals throughout the denoising trajectory, revealing that most of the structural conditioning information is captured in early timesteps - a key insight that enabled our hybrid approach. By visualizing these predictions at different stages, we can better understand how conditioning signals guide the generation process and identify the optimal point to transition between controlled and uncontrolled diffusion models.
+
 ## Visual Analysis of Denoising Processes
 
 <figure>
   <div align="center">
     <img src="./img/visualization_grid.png" alt="Comparison grid showing Standard Denoising vs DT Visualization at different completion percentages for various conditioning types" width="1200" height="300">
     <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
-      <strong>Figure 1:</strong> Comparison between standard denoising process (left) and Diffusion Target visualization (right) at different timesteps (0%, 30%, 60%, 100%) for three conditioning types: Canny edge, Open Pose, and Segmentation maps. DT-Visualization lets us see what the model predicts as the final output at each intermediate step. This helps us understand how different models build their images over time and reveals key differences between fast and slow models.
+      <strong>Figure 2:</strong> Comparison between standard denoising process (left) and Diffusion Target visualization (right) at different timesteps (0%, 30%, 60%, 100%) for three conditioning types: Canny edge, Open Pose, and Segmentation maps. DT-Visualization lets us see what the model predicts as the final output at each intermediate step. This helps us understand how ControlNets build their images over time.
     </figcaption>
   </div>
 </figure>
 
-Figure 2 reveals fascinating insights into how conditioning signals influence the generation process. The left side shows traditional denoising progression, where the image gradually emerges from random noise. The right side displays DT-Visualization results, showing how the model "sees" the target image at different timesteps.
+Figure 2 reveals fascinating insights into how conditioning signals influence the generation process. The left side shows traditional denoising process, where the image gradually emerges from random noise. The right side displays DT-Visualization results, showing how the model "sees" the target image at different timesteps.
 Notably, DT-Visualization produces recognizable images much earlier in the process. For example, with canny edge detection (top row), we can see a clear image of "Girl with a Pearl Earring" at just 30% completion in the DT visualization, while the standard denoising still shows mostly noise. This suggests that the conditioning signal provides strong guidance early in the process.
 
 ## References
