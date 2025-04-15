@@ -16,7 +16,7 @@ First, we leverage the **ControlNet** architecture proposed by Zhang et al. [[1]
 
 Our work is also heavily inspired by the recent advances in distillation techniques for diffusion models presented by Gandikota and Bau [[2]](#ref2). Their work introduces the concept of Diffusion Target (DT) visualization, which provides insights into what the model predicts as the final output at each intermediate denoising step. This visualization technique has proven invaluable for understanding how different models construct their outputs over time and has directly influenced our development of the hybrid-net approach described in this blog.
 
-Our contribution builds on these foundations by analyzing how conditioning signals influence the denoising trajectory and proposing a novel switching mechanism between specialized and general models to optimize both conditioning fidelity and generation diversity/efficiency.
+Our contribution builds on these foundations by analyzing how conditioning signals influence the denoising trajectory and proposing a novel switching mechanism between ControlNet and uncontrolled Stable Diffusion to optimize both conditioning fidelity and generation diversity/efficiency.
 
 ## Diffusion Target Visualization: Making Model Predictions Visible
 
@@ -46,6 +46,19 @@ As shown in the equation above, DT-Visualization mathematically extracts the mod
 
 Figure 2 reveals fascinating insights into how conditioning signals influence the generation process. The left side shows traditional denoising process, where the image gradually emerges from random noise. The right side displays DT-Visualization results, showing how the model "sees" the target image at different timesteps.
 Notably, DT-Visualization produces recognizable images much earlier in the process. For example, with canny edge detection (top row), we can see a clear image of "Girl with a Pearl Earring" at just 30% completion in the DT visualization, while the standard denoising still shows mostly noise. This suggests that the conditioning signal provides strong guidance early in the process.
+
+### Hybrid-Control-Net Framework
+The DT-Visualization technique revealed that conditioning information is predominantly captured in early timesteps, leading us to hypothesize that we could potentially boost both efficiency and output diversity by switching to stable diffusion at intermediate stages. Inspired by Gandikota and Bau's insights into diffusion model distillation [[2]](#ref2), we developed a novel hybrid approach that strategically transitions between models during the generation process.  
+
+<figure>
+  <div align="center">
+    <img src="./img/flow_diagram.png" alt="Hybrid-Control-Net architecture" width="800" height="400">
+    <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
+      <strong>Figure 3:</strong> The hybrid-control-net architecture. It starts with a conditioning signal (like canny edge detection) and text prompt fed into ControlNet, which processes these inputs until a predetermined intermediate step. At this point, we switch to a standard Stable Diffusion model to complete the generation.
+    </figcaption>
+  </div>
+
+As illustrated in Figure 1, our hybrid architecture begins with a conditioning signal (such as canny edge detection) and text prompt fed into ControlNet, which processes these inputs until a predetermined intermediate step. At this critical juncture, instead of continuing with ControlNet for the entire denoising trajectory, we switch to a standard Stable Diffusion model to complete the generation. This transition allows us to leverage ControlNet's strong conditioning capabilities in early steps while benefiting from the broader creative capabilities of standard diffusion models in the refinement phase.
 
 ## References
 
