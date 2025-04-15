@@ -12,7 +12,7 @@
 
 <figure>
   <div align="center">
-    <img src="./img/visualization_grid.png" alt="Comparison grid showing Standard Denoising vs DT Visualization at different completion percentages for various conditioning types" width="1200" height="400">
+    <img src="./img/visualization_grid.png" alt="Comparison grid showing Standard Denoising vs DT Visualization at different completion percentages for various conditioning types" width="1200" height="300">
     <figcaption style="text-align: center; color: #0066cc; max-width: 800px; margin: 0 auto;">
       <strong>Figure 1:</strong> Comparison between standard denoising progression (left) and Diffusion Target visualization (right) at different timesteps (0%, 30%, 60%, 100%) for three conditioning types: Canny edge detection, Pose estimation, and Segmentation maps. DT-Visualization lets us see what the model predicts as the final output at each intermediate step. This helps us understand how different models build their images over time and reveals key differences between fast and slow models.
     </figcaption>
