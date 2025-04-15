@@ -24,7 +24,7 @@ Inspired by the groundbreaking work of Gandikota and Bau [[2]](#ref2), our appro
 
 <figure>
   <div align="center">
-    <img src="./img/dt_equation.png" alt="Diffusion Target Visualization equation" width="600" height="100">
+    <img src="./img/dt_equation.png" alt="Diffusion Target Visualization equation" width="400" height="100">
     <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
       <strong>Figure 1:</strong> The equation for Diffusion Target Visualization (DT-Visualization). It rearranges the diffusion equations to extract the model's prediction of the clean image (x̃₀,ₜ) at any timestep (t). This allows us to visualize how ControlNet interprets conditioning signals throughout the denoising trajectory.
     </figcaption>
