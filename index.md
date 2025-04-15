@@ -52,7 +52,7 @@ The DT-Visualization technique revealed that conditioning information is predomi
 
 <figure>
   <div align="center">
-    <img src="./img/flow_diagram.png" alt="Hybrid-Control-Net architecture" width="800" height="400">
+    <img src="./img/flow_diagram.png" alt="Hybrid-Control-Net architecture" width="800" height="300">
     <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
       <strong>Figure 3:</strong> The hybrid-control-net architecture. It starts with a conditioning signal (like canny edge detection) and text prompt fed into ControlNet, which processes these inputs until a predetermined intermediate step. At this point, we switch to a standard Stable Diffusion model to complete the generation.
     </figcaption>
