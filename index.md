@@ -57,8 +57,9 @@ The DT-Visualization technique revealed that conditioning information is predomi
       <strong>Figure 3:</strong> The hybrid-control-net architecture. It starts with a conditioning signal (like canny edge detection) and text prompt fed into ControlNet, which processes these inputs until a predetermined intermediate step. At this point, we switch to a standard Stable Diffusion model to complete the generation.
     </figcaption>
   </div>
+</figure>
 
-As illustrated in Figure 1, our hybrid architecture begins with a conditioning signal (such as canny edge detection) and text prompt fed into ControlNet, which processes these inputs until a predetermined intermediate step. At this critical juncture, instead of continuing with ControlNet for the entire denoising trajectory, we switch to a standard Stable Diffusion model to complete the generation. This transition allows us to leverage ControlNet's strong conditioning capabilities in early steps while benefiting from the broader creative capabilities of standard diffusion models in the refinement phase.
+As illustrated in Figure 3, our hybrid architecture begins with a conditioning signal (such as canny edge map) and text prompt fed into ControlNet, which processes these inputs until a predetermined intermediate step. At this critical juncture, instead of continuing with ControlNet for the entire denoising trajectory, we switch to a standard Stable Diffusion model to complete the generation. This transition allows us to leverage ControlNet's strong conditioning capabilities in early steps while benefiting from the broader creative capabilities of uncontrolled diffusion models in the refinement phase.
 
 ## References
 
