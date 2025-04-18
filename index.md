@@ -1,7 +1,7 @@
 <div align="center">
   <h1 align="center">Visualizing Conditioning Signal Influence in ControlNet: A Hybrid Approach</h1>
   <p align="center">
-    <a href="mailto:zheng.junx@northeastern.edu">Junxin Zheng</a>¹, <a href="mailto:wang.zhen3@northeastern.edu">Wang Zhen</a>¹
+    <a href="mailto:zheng.junx@northeastern.edu">Junxin Zheng</a>¹, <a href="mailto:wang.zhen3@northeastern.edu">Zhen Wang</a>¹
   </p>
   <p align="center">
     ¹<a href="https://khoury.northeastern.edu/">Northeastern University</a>
@@ -10,13 +10,16 @@
 
 ## Introduction: Balancing Control and Creativity in Image Generation
 
-How does the conditioning signal affect the denoising process at different timesteps? This fundamental question drives our exploration into the dynamics of conditioning signals in diffusion models. While existing approaches like ControlNet [[1]](#ref1) have revolutionized our ability to guide the generation process, they create a rigid constraint throughout the entire denoising trajectory—potentially limiting creativity and computational efficiency.
+Recent advances in text-to-image diffusion models have enabled users exercise finegrained control over the generation process—not only through textual prompts, but also via spatial conditioning signals such as edges, poses, and segmentation maps. Among these techniques, ControlNet [1](#ref1) stands out as a powerful framework that integrates conditioning inputs directly into the architecture, applying them consistently throughout the entire generation process. 
 
-Our research introduces a novel perspective on this challenge through what we call the "Hybrid-Control-Net" approach. Unlike traditional implementations that apply specialized conditioning architectures from start to finish, we demonstrate that most conditioning information is effectively captured in early denoising steps. This key insight differentiates our work from previous studies by suggesting a dynamic transition between model types during generation—using ControlNet for initial structural guidance before switching to standard Stable Diffusion for creative refinement.
+While highly effective, its fixed conditioning strategy may impose unnecessary constraints in later denoising steps — potentially limiting creative diversity and increasing computational overhead. This observation motivates a key question:
+> **How does conditioning signal affect the denoising process across timesteps?** 
+
+Our research begins by examining the temporal dynamics of conditioning signals within ControlNet. We employ both visual and mathematical tools to understand their role during generation, with a particular focus on DT-Visualization, introduced by Gandikota and Bau [2](#ref2) that reveals the model’s internal predictions of the final image at any intermediate timestep. Through this lens, we uncover that most structural conditioning influence occurs in the early denoising steps. 
+
+Based on this insight, we propose a novel approach-Hybrid-Control-Net, which dynamically transitions between model architectures during generation—using ControlNet for initial structural guidance in the early steps before switching to standard Stable Diffusion for creative refinement and efficiency.
 
 To facilitate further exploration of these concepts, we've developed an open-source implementation available on our [GitHub repository](https://github.com/CS7150-Zheng-Wang/hybrid-control-net). Our codebase enables researchers and practitioners to experiment with different conditioning signals, transition points, and model combinations, providing a foundation for continued innovation in controlled image generation.
-
-By leveraging DT-Visualization techniques inspired by Gandikota and Bau [[2]](#ref2), we reveal the internal workings of these models, providing unprecedented insights into how conditioning signals guide the generation process across different timesteps. Join us as we explore this exciting frontier where control meets creativity in diffusion models.
 
 ## Related Work
 
