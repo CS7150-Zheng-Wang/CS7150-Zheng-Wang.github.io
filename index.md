@@ -8,7 +8,7 @@
   </p>
 </div>
 
-## Introduction: s
+## Introduction: 
 
 Recent advances in text-to-image diffusion models have enabled users exercise fine-grained control over the generation process—not only through textual prompts, but also via spatial conditioning signals such as edges, poses, and segmentation maps. Among these techniques, ControlNet [1](#ref1) stands out as a powerful framework that integrates conditioning inputs directly into the architecture, applying them consistently throughout the entire generation process. 
 
