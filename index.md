@@ -49,22 +49,25 @@ First, we leverage the **ControlNet** architecture proposed by Zhang et al. [[1]
   </div>
 </figure>
 
-<table style="width:100%; text-align:center;">
-  <tr>
-    <td>
-      <img src="./img/controlnet_block.png" alt="ControlNet Block" width="300"><br>
-      <span style="color: #000080; font-size: 0.8em;">
-        <strong>Figure 0a:</strong> Internal structure of a ControlNet block.
-      </span>
-    </td>
-    <td>
-      <img src="./img/controlnet_architecture.png" alt="ControlNet Architecture" width="300"><br>
-      <span style="color: #000080; font-size: 0.8em;">
-        <strong>Figure 0b:</strong> Overall architecture of ControlNet showing dual-path processing.
-      </span>
-    </td>
-  </tr>
-</table>
+<div style="display: flex; justify-content: center; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+
+  <div style="text-align: center; max-width: 300px;">
+    <img src="./img/controlnet_block.png" alt="ControlNet Block" width="300">
+    <div style="color: #000080; font-size: 0.8em; margin-top: 6px;">
+      <strong>Figure 0a:</strong> A detailed overview of a ControlNet block.
+    </div>
+  </div>
+
+  <div style="text-align: center; max-width: 300px;">
+    <img src="./img/controlnet_architecture.png" alt="ControlNet Architecture" width="300">
+    <div style="color: #000080; font-size: 0.8em; margin-top: 6px;">
+      <strong>Figure 0b:</strong> The overall architecture of ControlNet, as proposed by Zhang et al. [1], with a parallel UNet for conditioning inputs.
+    </div>
+  </div>
+
+</div>
+
+
 
 
 
