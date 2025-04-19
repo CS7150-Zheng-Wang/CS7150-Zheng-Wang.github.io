@@ -8,7 +8,7 @@
   </p>
 </div>
 
-## Introduction: Balancing Control and Creativity in Image Generation
+## Introduction: s
 
 Recent advances in text-to-image diffusion models have enabled users exercise finegrained control over the generation process—not only through textual prompts, but also via spatial conditioning signals such as edges, poses, and segmentation maps. Among these techniques, ControlNet [1](#ref1) stands out as a powerful framework that integrates conditioning inputs directly into the architecture, applying them consistently throughout the entire generation process. 
 
@@ -26,7 +26,7 @@ To facilitate further exploration of these concepts, we've developed an open-sou
 
 This project builds upon two primary foundations in the field of image generation with diffusion models. 
 
-First, we leverage the **ControlNet** architecture proposed by Zhang et al. [[1]](#ref1) which introduces a trainable copy of the UNet encoder blocks that allows conditioning signals (such as edges, poses, or segmentation maps) to guide the image generation process. ControlNet has demonstrated remarkable ability to maintain fidelity to input conditions while preserving the high-quality generation capabilities of pretrained diffusion models.
+First, we leverage the **ControlNet** architecture proposed by Zhang et al. [[1]](#ref1) which introduces a trainable copy of the UNet encoder blocks that allows conditioning signals (such as edges, poses, or segmentation maps) to guide the image generation process. ControlNet has demonstrated remarkable ability to maintain fidelity to input conditions while preserving the high-quality generation capabilities of pretrained diffusion models. An overview of ControlNet is shown in Figure 0. 
 
 <figure>
   <div align="center">
@@ -36,10 +36,6 @@ First, we leverage the **ControlNet** architecture proposed by Zhang et al. [[1]
     </figcaption>
   </div>
 </figure>
-
-
-
-
 
 
 Our work is also heavily inspired by the recent advances in distillation techniques for diffusion models presented by Gandikota and Bau [[2]](#ref2). Their work introduces the concept of Diffusion Target (DT) visualization, which provides insights into what the model predicts as the final output at each intermediate denoising step. This visualization technique has proven invaluable for understanding how different models construct their outputs over time and has directly influenced our development of the hybrid-net approach described in this blog.
