@@ -13,6 +13,7 @@
 Recent advances in text-to-image diffusion models have enabled users exercise finegrained control over the generation process—not only through textual prompts, but also via spatial conditioning signals such as edges, poses, and segmentation maps. Among these techniques, ControlNet [1](#ref1) stands out as a powerful framework that integrates conditioning inputs directly into the architecture, applying them consistently throughout the entire generation process. 
 
 While highly effective, its fixed conditioning strategy may impose unnecessary constraints in later denoising steps — potentially limiting creative diversity and increasing computational overhead. This observation motivates a key question:
+
 > **How does conditioning signal affect the denoising process across timesteps?** 
 
 Our research begins by examining the temporal dynamics of conditioning signals within ControlNet. We employ both visual and mathematical tools to understand their role during generation, with a particular focus on DT-Visualization, introduced by Gandikota and Bau [2](#ref2) that reveals the model’s internal predictions of the final image at any intermediate timestep. Through this lens, we uncover that most structural conditioning influence occurs in the early denoising steps. 
@@ -26,6 +27,15 @@ To facilitate further exploration of these concepts, we've developed an open-sou
 This project builds upon two primary foundations in the field of image generation with diffusion models. 
 
 First, we leverage the **ControlNet** architecture proposed by Zhang et al. [[1]](#ref1) which introduces a trainable copy of the UNet encoder blocks that allows conditioning signals (such as edges, poses, or segmentation maps) to guide the image generation process. ControlNet has demonstrated remarkable ability to maintain fidelity to input conditions while preserving the high-quality generation capabilities of pretrained diffusion models.
+
+<figure>
+  <div align="center">
+    <img src="./img/controlnet_architecture.png" alt="ControlNet Architecture" width="600">
+    <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
+      <strong>Figure X:</strong> The architecture of ControlNet, as proposed by Zhang et al. [1]. A parallel branch of UNet encoder blocks is added to process conditioning inputs. The outputs of this branch are merged with the original UNet via element-wise addition at corresponding resolutions, enabling spatial control without disrupting the pretrained weights.
+    </figcaption>
+  </div>
+</figure>
 
 Our work is also heavily inspired by the recent advances in distillation techniques for diffusion models presented by Gandikota and Bau [[2]](#ref2). Their work introduces the concept of Diffusion Target (DT) visualization, which provides insights into what the model predicts as the final output at each intermediate denoising step. This visualization technique has proven invaluable for understanding how different models construct their outputs over time and has directly influenced our development of the hybrid-net approach described in this blog.
 
