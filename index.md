@@ -10,13 +10,13 @@
 
 ## Introduction: 
 
-Recent advances in text-to-image diffusion models have enabled users exercise fine-grained control over the generation process—not only through textual prompts, but also via spatial conditioning signals such as edges, poses, and segmentation maps. Among these techniques, ControlNet [1](#ref1) stands out as a powerful framework that integrates conditioning inputs directly into the architecture, applying them consistently throughout the entire generation process. 
+Recent advances in text-to-image diffusion models have enabled users exercise fine-grained control over the generation process—not only through textual prompts, but also via spatial conditioning signals such as edges, poses, and segmentation maps. Among these techniques, ControlNet [[1]](#ref1) stands out as a powerful framework that integrates conditioning inputs directly into the architecture, applying them consistently throughout the entire generation process. 
 
 While highly effective, its fixed conditioning strategy may impose unnecessary constraints in later denoising steps — potentially limiting creative diversity and increasing computational overhead. This observation motivates a key question:
 
 > **How does conditioning signal affect the denoising process across timesteps?** 
 
-Our research begins by examining the temporal dynamics of conditioning signals within ControlNet. We employ both visual and mathematical tools to understand their role during generation, with a particular focus on DT-Visualization, introduced by Gandikota and Bau [2](#ref2) that reveals the model’s internal predictions of the final image at any intermediate timestep. Through this lens, we uncover that most structural conditioning influence occurs in the early denoising steps. 
+Our research begins by examining the temporal dynamics of conditioning signals within ControlNet. We employ both visual and mathematical tools to understand their role during generation, with a particular focus on DT-Visualization, introduced by Gandikota and Bau [[2]](#ref2) that reveals the model’s internal predictions of the final image at any intermediate timestep. Through this lens, we uncover that most structural conditioning influence occurs in the early denoising steps. 
 
 Based on this insight, we propose a novel approach-Hybrid-Control-Net, which dynamically transitions between model architectures during generation—using ControlNet for initial structural guidance in the early steps before switching to standard Stable Diffusion for creative refinement and efficiency.
 
