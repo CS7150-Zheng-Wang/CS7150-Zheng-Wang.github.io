@@ -29,11 +29,23 @@ This project builds upon two primary foundations in the field of image generatio
 First, we leverage the **ControlNet** architecture proposed by Zhang et al. [[1]](#ref1) which introduces a trainable copy of the UNet encoder blocks that allows conditioning signals (such as edges, poses, or segmentation maps) to guide the image generation process. ControlNet has demonstrated remarkable ability to maintain fidelity to input conditions while preserving the high-quality generation capabilities of pretrained diffusion models.
 
 <figure>
-  <div align="center">
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
+
+  <div style="text-align: center;">
+    <img src="./img/controlnet_block.png" alt="ControlNet Architecture" width="300">
+    <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
+      <strong>Figure 0a:</strong> A detailed overview of a ControlNet block.
+    </figcaption>
+  </div>
+
+
+  <div style="text-align: center;">
     <img src="./img/controlnet_architecture.png" alt="ControlNet Architecture" width="300">
     <figcaption style="text-align: center; color: #000080; font-size: 0.8em;">
-      <strong>Figure 0:</strong> The architecture of ControlNet, as proposed by Zhang et al. [1]. A parallel branch of UNet encoder blocks is added to process conditioning inputs. The outputs of this branch are merged with the original UNet via element-wise addition at corresponding resolutions, enabling spatial control without disrupting the pretrained weights.
+      <strong>Figure 0b:</strong> The overall architecture of ControlNet, as proposed by Zhang et al. [1] with a parallel UNet for conditioning inputs.
     </figcaption>
+  </div>
+
   </div>
 </figure>
 
